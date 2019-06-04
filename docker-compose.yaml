@@ -1,0 +1,12 @@
+version: '3'
+services:
+  tensorflow:
+    container_name: acme_tensorflow
+    image: tensorflow/tensorflow:latest-py3-jupyter
+    volumes:
+    - './notebooks:/tf/notebooks'
+    working_dir: '/tf/notebooks'
+    command: ['/bin/sh', '-c', 'jupyter notebook --allow-root --ip 0.0.0.0 .']
+    ports:
+    - "8888:8888"
+    restart: always
